@@ -8,7 +8,6 @@ if (Meteor.isClient) {
   Template.long.events({
     click: function() {
       Iron.Location.go('/' + Random.id());
-      console.log('gone');
       $(window).scrollTop(0);
     }
   });

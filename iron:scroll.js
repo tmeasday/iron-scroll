@@ -8,10 +8,8 @@ Meteor.startup(function() {
     Iron.Location.replaceState(_.extend({}, state, {lastScrollTop: scrollTop}));
   }, 100));
   
-  // XXX: use Iron.Location.onPopState for this
-  $(window).on('popstate.iron-scroll', function() {
-    
-    var state = Iron.Location.get().options.historyState;
+  Iron.Location.onPopState(function() {
+    var state = this.options.historyState;
     if (state && state.lastScrollTop)
       Meteor.setTimeout(function() {
         // XXX: selector
